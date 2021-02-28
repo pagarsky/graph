@@ -19,10 +19,17 @@ $ python --version
 ```
 $ python3 venv ./venv/
 ```
-and `$ ./venv/bin/activate` for **Linux** or `$ .\venv\Scripts\activate` for **Windows**.
+then `$ ./venv/bin/activate` for **Linux** or `$ .\venv\Scripts\activate` for **Windows** to activate venv.
 
 \
-3. Run `main.py` like usual:
+3. Install pip requirements with
+```
+$ (venv) pip install -r requirements.txt
+```
+
+
+\
+4. Run `main.py` like usual:
 ```bash
 $ (venv) python3 main.py
 ```
