@@ -1,6 +1,8 @@
 # graph WIP
 Simple graph screensaver made with [pyglet](https://pyglet.readthedocs.io/en/latest/index.html).  
 
+![Example](https://github.com/pagarsky/graph/blob/master/resources/example.gif)
+
 ## Installation & Usage
 1. make sure u have python3 installed with
 
