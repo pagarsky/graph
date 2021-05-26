@@ -1,7 +1,7 @@
 import random
 import node
 
-from utilities.globals import window, batch, circles
+from utilities.globals import window, batch, circles, lines
 from utilities.config import window_width, window_height, circle_radius, amount
 from utilities.config import CONNECTION_DISTANCE, RANDOM_SPEEDS, SPEED_RANGE, FPS
 from utilities.config import DIVISOR as K
@@ -35,14 +35,18 @@ def check_neighbors():
         for j in range(i + 1, l):
             other = circles[j]
             if this.distance_to(other) < CONNECTION_DISTANCE:
-                this.neightbors.add(other)
-                other.neightbors.add(this)
+                this.neighbors.add(other)
+                other.neighbors.add(this)
             else:
                 try:
-                    this.neightbors.remove(other)
-                    other.neightbors.remove(this)
+                    this.neighbors.remove(other)
+                    other.neighbors.remove(this)
                 except KeyError:
                     pass
+
+
+def clear_all():
+    window.clear()
 
 
 def tick(dt=0.1):
@@ -54,7 +58,7 @@ def tick(dt=0.1):
         node.move(dt)
         node.keep_in_bounds(window_width, window_height)
     check_neighbors()
-    connect_all(CHEMISTRY)
+    connect_all(POLYGONS)
 
 
 pyglet.clock.schedule_interval(tick, 1.0 / FPS)
@@ -62,7 +66,7 @@ pyglet.clock.schedule_interval(tick, 1.0 / FPS)
 
 @window.event
 def on_draw():
-    window.clear()
+    clear_all()
     batch.draw()
 
     tick()

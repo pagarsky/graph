@@ -16,7 +16,7 @@ class Node:
         self._circle = pyglet.shapes.Circle(x=x, y=y, radius=r, batch=batch)
         self.radius = r
         self.speed = [0, 0]
-        self.neightbors = set()
+        self.neighbors = set()
 
     def set_coords(self, x: int, y: int):
         self._circle.x = x
