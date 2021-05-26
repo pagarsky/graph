@@ -6,3 +6,4 @@ window = pyglet.window.Window(window_width, window_height, fullscreen=FULLSCREEN
 batch = pyglet.graphics.Batch()
 
 circles = []
+lines = []
