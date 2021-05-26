@@ -1,4 +1,6 @@
-from utilities.globals import circles
+import time
+
+from utilities.globals import circles, batch, lines
 
 import pyglet
 
@@ -13,24 +15,31 @@ def connect_all(mode: int):
 
 
 def connect_chemistry():
-    global circles
+    global circles, batch, lines
     connected = set()
 
     for node in circles:
-        for other in node.neightbors:
+        for other in node.neighbors:
             if other not in connected:
-                line = pyglet.shapes.Line(node.x, node.y, other.x, other.y)
-                line.draw()
+                vertex_list = pyglet.graphics.vertex_list(2,
+                    ('v2f', (node.x, node.y, other.x, other.y))
+                )
+                vertex_list.draw(pyglet.gl.GL_LINES)
+                vertex_list.delete()
                 connected.add(other)
 
 
+
 def connect_polygons():
-    global circles
+    global circles, batch, lines
     connected = set()
 
     for node in circles:
-        for other in node.neightbors:
+        for other in node.neighbors:
             if (node, other) not in connected:
-                line = pyglet.shapes.Line(node.x, node.y, other.x, other.y)
-                line.draw()
+                vertex_list = pyglet.graphics.vertex_list(2,
+                    ('v2f', (node.x, node.y, other.x, other.y))
+                )
+                vertex_list.draw(pyglet.gl.GL_LINES)
+                vertex_list.delete()
                 connected.add((node, other))
